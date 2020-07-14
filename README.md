@@ -1,2 +1,1 @@
-# endpoint-proxy
-endpoint github Oauth proxy server
+https://api.devstu.co.kr/rss
