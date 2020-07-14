@@ -28,12 +28,6 @@ app.post(
         console.log("Request on");
         const { code } = req.body;
         console.log(code);
-        // const client_secret = "0c85c443181245cc6fba6e3d41e184e678c40d0c";
-        // const client_id = "aac6cc06d7890685988f";
-        // const data = new FormData();
-        // data.append("client_id", client_id);
-        // data.append("client_secret", client_secret);
-        // data.append("code", code);
         const response = await axios
             .post("https://github.com/login/oauth/access_token", {
                 code: code,
@@ -42,7 +36,12 @@ app.post(
             })
             .then((response) => {
                 result = response.data;
-                return response.data;
+                accessTokenRaw = response.data.split("&")[0];
+                accessToken = accessTokenRaw.split("=")[1];
+                const responseJson = {
+                    accessToken: accessToken,
+                };
+                return responseJson;
             })
             .catch((error) => {
                 console.log("error");
