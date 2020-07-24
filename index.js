@@ -8,7 +8,7 @@ const cors = require("cors");
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: "text/*" }));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cors());
+// app.use(cors());
 // Enabled Access-Control-Allow-Origin", "*" in the header so as to by-pass the CORS error.
 // app.use((req, res, next) => {
 //     res.header("Access-Control-Allow-Origin", "*");
@@ -38,6 +38,7 @@ app.post(
                 result = response.data;
                 accessTokenRaw = response.data.split("&")[0];
                 accessToken = accessTokenRaw.split("=")[1];
+                console.log(result);
                 const responseJson = {
                     accessToken: accessToken,
                 };
